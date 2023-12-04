@@ -20,7 +20,7 @@ python3 -m venv .venv
 
 **On windows :**
 
-.\.venv\Scripts\activate
+.\\.venv\Scripts\activate
 
 **On Linux/MacOS :**
 
