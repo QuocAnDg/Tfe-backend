@@ -18,9 +18,13 @@ python3 -m venv .venv
 
 ### 2. activate the virtual environnement
 
+**On windows :**
+
+.\.venv\Scripts\activate
+
 **On Linux/MacOS :**
 
-source venv/bin/activate
+source ./.venv/Scripts/activate
 
 ### 3. install dependencies with requirements.txt
 
