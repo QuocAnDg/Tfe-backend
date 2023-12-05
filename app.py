@@ -16,12 +16,22 @@ password = os.getenv("DB_PASSWORD")
 
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
-@app.route('/nodes')
-def tous_les_noeuds():
+
+@app.get('/users')
+def get_users():
     query = "MATCH (n:User) RETURN n"
     with driver.session() as session:
         nodes = session.run(query).data()
     return jsonify(nodes)
+
+
+@app.get('/commandes')
+def get_commandes():
+    query = "MATCH (n:Commande) RETURN n"
+    with driver.session() as session:
+        nodes = session.run(query).data()
+    return jsonify(nodes)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
