@@ -10,11 +10,13 @@ git clone https://github.com/QuocAnDg/Tfe-backend.git
 
 **On windows :**
 
-python -m venv .venv
+python3 -m venv .venv 
+or 
+py -m venv .venv 
 
 **On Linux/MacOS :**
 
-python3 -m venv .venv
+python -m venv .venv
 
 ### 2. activate the virtual environnement
 
