@@ -19,7 +19,7 @@ driver = GraphDatabase.driver(uri, auth=(username, password))
 
 @app.get('/users')
 def get_users():
-    query = "MATCH (n:User) RETURN n"
+    query = "MATCH (user:User) RETURN user"
     with driver.session() as session:
         nodes = session.run(query).data()
     return jsonify(nodes)
@@ -27,7 +27,7 @@ def get_users():
 
 @app.get('/commandes')
 def get_commandes():
-    query = "MATCH (n:Commande) RETURN n"
+    query = "MATCH (commande:Commande) RETURN commande"
     with driver.session() as session:
         nodes = session.run(query).data()
     return jsonify(nodes)

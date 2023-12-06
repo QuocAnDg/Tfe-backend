@@ -1,0 +1,39 @@
+MATCH (n)
+DETACH DELETE n;
+
+CREATE (u:User {username:"admin",password:"admin", isAdmin:true});
+CREATE (u:User {username:"livreur1",password:"livreur1", isAdmin:false});
+
+CREATE (a:Article{name:"Langes S"});
+CREATE (a:Article{name:"Langes M"});
+CREATE (a:Article{name:"Langes XL"});
+CREATE (a:Article{name:"Inserts"});
+CREATE (a:Article{name:"Sacs-poubelle"});
+
+CREATE (c:Commande{creche:"Crèche 1"});
+CREATE (c:Commande{creche:"Crèche 2"});
+CREATE (c:Commande{creche:"Crèche 3"});
+CREATE (c:Commande{creche:"Crèche 4"});
+CREATE (c:Commande{creche:"Crèche 5"});
+CREATE (c:Commande{creche:"Crèche 6"});
+CREATE (c:Commande{creche:"Crèche 7"});
+
+CREATE (t:Tournee{ordre:1});
+CREATE (t:Tournee{ordre:2});
+CREATE (t:Tournee{ordre:3});
+CREATE (t:Tournee{ordre:4});
+
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 1"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 2"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 3"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 4"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 5"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 6"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (tournee1:Tournee {ordre:1}), (commande1:Commande {creche:"Crèche 7"})
+CREATE (tournee1)-[:CONTIENT]->(commande);
