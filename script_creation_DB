@@ -23,17 +23,31 @@ CREATE (t:Tournee{ordre:2});
 CREATE (t:Tournee{ordre:3});
 CREATE (t:Tournee{ordre:4});
 
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 1"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 2"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 3"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 4"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 5"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande:Commande {creche:"Crèche 6"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
-MATCH (tournee1:Tournee {ordre:1}), (commande1:Commande {creche:"Crèche 7"})
-CREATE (tournee1)-[:CONTIENT]->(commande);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 1"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 2"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 3"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 4"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 5"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 6"})
+CREATE (t)-[:POSSEDE]->(c);
+MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 7"})
+CREATE (t)-[:POSSEDE]->(c);
+
+MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:5}]->(a);
+MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+
+MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:10}]->(a);
+MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:4}]->(a);
