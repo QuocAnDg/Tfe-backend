@@ -1,0 +1,16 @@
+###
+
+# curl -X POST
+#  http://localhost:5000/example
+#  -H 'Content-Type: application/json'
+#  -d '{"key": "value"}'
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test"
+}
+
+###
+
