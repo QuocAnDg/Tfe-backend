@@ -48,9 +48,12 @@ def get_users():
     return jsonify(nodes)
 
 
-@app.get('/commandes')
-def get_commandes():
-    query = "MATCH (commande:Commande) RETURN commande"
+@app.get('/commandes/<tourneeid>')
+def get_commandes(tourneeid):
+    query = f"""MATCH (tournee:Tournee)-[:POSSEDE]->(commande:Commande)
+    WHERE tournee.ordre = {tourneeid}
+    RETURN commande;"""
+    print(query)
     with driver.session() as session:
         nodes = session.run(query).data()
     return jsonify(nodes)
