@@ -4,50 +4,46 @@ DETACH DELETE n;
 CREATE (u:User {username:"admin",password:"admin", isAdmin:true});
 CREATE (u:User {username:"livreur1",password:"livreur1", isAdmin:false});
 
-CREATE (a:Article{name:"Langes S"});
-CREATE (a:Article{name:"Langes M"});
-CREATE (a:Article{name:"Langes XL"});
-CREATE (a:Article{name:"Inserts"});
-CREATE (a:Article{name:"Sacs-poubelle"});
+CREATE (a:Article{nom:"Langes S"});
+CREATE (a:Article{nom:"Langes M"});
+CREATE (a:Article{nom:"Langes L"});
+CREATE (a:Article{nom:"Inserts"});
+CREATE (a:Article{nom:"Sacs-poubelle"});
+CREATE (a:Article{nom:"Gants de toilette"});
 
-CREATE (c:Commande{creche:"Crèche 1"});
-CREATE (c:Commande{creche:"Crèche 2"});
-CREATE (c:Commande{creche:"Crèche 3"});
-CREATE (c:Commande{creche:"Crèche 4"});
-CREATE (c:Commande{creche:"Crèche 5"});
-CREATE (c:Commande{creche:"Crèche 6"});
-CREATE (c:Commande{creche:"Crèche 7"});
+CREATE (c:Creche{nom:"Rêverie", adresse: "Rue Francisco Ferrer 19 boite 3, 6181 Gouy-Lez-Piéton"});
+CREATE (c:Creche{nom:"Les ptits loups", adresse:"Rue de la Vielle Place 51, 6001 Marcinelle"});
+CREATE (c:Creche{nom:"L'arbre à cabane", adresse:"Chaussée de Nivelles 212, 6041 gosselies"});
+CREATE (c:Creche{nom:"Les lutins", adresse:"Rue de Tamines 18, 6224 Wanfercée-Baulet"});
+CREATE (c:Creche{nom:"Les Tiffins", adresse:"Rue des Combattants, 59, 1310 La Hulpe"});
+CREATE (c:Creche{nom:"Cardinal Mercier", adresse:"Rue Souveraine 48, 1050 Bruxelles"});
+CREATE (c:Creche{nom:"Les Poussins",adresse:"Av. Ducpétiaux 16, 1060 Saint-Gilles"});
+CREATE (c:Creche{nom:"Saint Joseph", adresse:"Chaussée de Boisfort 40, 1050 Ixelles"});
 
-CREATE (t:Tournee{ordre:1});
-CREATE (t:Tournee{ordre:2});
-CREATE (t:Tournee{ordre:3});
-CREATE (t:Tournee{ordre:4});
 
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 1"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 2"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 3"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 4"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 5"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 6"})
-CREATE (t)-[:POSSEDE]->(c);
-MATCH (t:Tournee {ordre:1}), (c:Commande {creche:"Crèche 7"})
-CREATE (t)-[:POSSEDE]->(c);
+CREATE (t:Tournee{nom:"Tournée Bruxelles Sud"});
+CREATE (t:Tournee{nom:"Tournée Bruxelles Nord"});
 
-MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Langes S"})
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Rêverie"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les ptits loups"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"L'arbre à cabane"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les lutins"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Tiffins"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}, (c:Creche {nom:"Cardinal Mercier"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Poussins"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}, (c:Creche {nom:"Saint Joseph"})
+CREATE (t)-[:LIVRE]->(c);
+
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Langes S"})
 CREATE (c)-[:CONTIENT {quantite:5}]->(a);
-MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Inserts"})
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Inserts"})
 CREATE (c)-[:CONTIENT {quantite:3}]->(a);
-MATCH (c:Commande {creche:"Crèche 1"}), (a:Article {name:"Sacs-poubelle"})
+MATCH (c:Creche {creche:"Rêverie"}), (a:Article {nom:"Sacs-poubelle"})
 CREATE (c)-[:CONTIENT {quantite:2}]->(a);
-
-MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Langes S"})
-CREATE (c)-[:CONTIENT {quantite:10}]->(a);
-MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Inserts"})
-CREATE (c)-[:CONTIENT {quantite:1}]->(a);
-MATCH (c:Commande {creche:"Crèche 2"}), (a:Article {name:"Sacs-poubelle"})
-CREATE (c)-[:CONTIENT {quantite:4}]->(a);
