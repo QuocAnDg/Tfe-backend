@@ -11,7 +11,6 @@ from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import os
 
-load_dotenv()
 
 app = Flask(__name__)
 CORS(app, origins="http://localhost:5173")
