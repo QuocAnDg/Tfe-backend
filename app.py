@@ -23,7 +23,7 @@ jwt = JWTManager(app)
 # Register routes
 app.register_blueprint(users.users_blueprint, url_prefix="/users")
 app.register_blueprint(commandes.commandes_blueprint, url_prefix="/commandes")
-app.register_blueprint(tournees.tournees_blueprint, url_prefix="/tournees")
+app.register_blueprint(tournees.bp_tournees, url_prefix="/tournees")
 
 
 if __name__ == '__main__':

@@ -1,5 +1,3 @@
-import logging
-
 from flask import Blueprint, request, jsonify
 from models import users
 from flask_jwt_extended import create_access_token

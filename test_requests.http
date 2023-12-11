@@ -1,4 +1,4 @@
-# Login
+### Login
 POST http://localhost:5000/users/login
 Content-Type: application/json
 
@@ -7,5 +7,10 @@ Content-Type: application/json
   "password": "admin"
 }
 
+### Créer tournée
+POST http://localhost:5000/tournees/
+Content-Type: application/json
 
-POST http://localhost:5000/commandes/1
+{
+  "nom": "Tournée manèges"
+}
