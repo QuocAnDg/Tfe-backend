@@ -7,10 +7,26 @@ Content-Type: application/json
   "password": "admin"
 }
 
-### Créer tournée
+### Créer tournée et ses crèches associées
 POST http://localhost:5000/tournees/
 Content-Type: application/json
 
 {
-  "nom": "Tournée manèges"
+  "nom": "Tournée manèges",
+  "crèches": [
+    {
+      "nom": "Crèche 1",
+      "articles": {
+        "Langes S": 3,
+        "Langes M": 2
+      }
+    },
+    {
+      "nom": "Crèche 2",
+      "articles": {
+        "Langes S": 1,
+        "Langes M": 4
+      }
+    }
+  ]
 }

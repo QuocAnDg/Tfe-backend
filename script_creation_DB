@@ -21,8 +21,8 @@ CREATE (c:Creche{nom:"Les Poussins",adresse:"Av. Ducpétiaux 16, 1060 Saint-Gill
 CREATE (c:Creche{nom:"Saint Joseph", adresse:"Chaussée de Boisfort 40, 1050 Ixelles"});
 
 
-CREATE (t:Tournee{nom:"Tournée Bruxelles Sud"});
-CREATE (t:Tournee{nom:"Tournée Bruxelles Nord"});
+CREATE (t:Tournee{id:1, nom:"Tournée Bruxelles Sud"});
+CREATE (t:Tournee{id:2, nom:"Tournée Bruxelles Nord"});
 
 MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Rêverie"})
 CREATE (t)-[:LIVRE]->(c);
