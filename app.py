@@ -27,6 +27,9 @@ app.register_blueprint(tournees.bp_tournees, url_prefix="/tournees")
 app.register_blueprint(creches.bp_creches, url_prefix="/creches")
 app.register_blueprint(articles.bp_articles, url_prefix="/articles")
 
+@app.route('/')
+def hello():
+    return 'Hello, World! 2'
 
 if __name__ == '__main__':
     app.run(debug=True)

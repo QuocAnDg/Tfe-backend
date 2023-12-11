@@ -59,4 +59,7 @@ Content-Type: application/json
   }
 }
 
+### READ une crèche (crèche)
+GET http://localhost:5000/creches/Rêverie
+
 
