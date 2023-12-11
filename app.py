@@ -4,6 +4,7 @@ from flask_cors import CORS
 
 from routes import users
 from routes import tournees
+from routes import creches
 
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -22,6 +23,7 @@ jwt = JWTManager(app)
 # Register routes
 app.register_blueprint(users.users_blueprint, url_prefix="/users")
 app.register_blueprint(tournees.bp_tournees, url_prefix="/tournees")
+app.register_blueprint(creches.bp_creches, url_prefix="/creches")
 
 
 if __name__ == '__main__':
