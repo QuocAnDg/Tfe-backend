@@ -7,6 +7,15 @@ Content-Type: application/json
   "password": "admin"
 }
 
+### Create a new user
+POST http://localhost:5000/users/register
+Content-Type: application/json
+
+{
+  "username": "aNewUser2",
+  "password": "blablabla"
+}
+
 ### Créer tournée et ses crèches associées
 POST http://localhost:5000/tournees/
 Content-Type: application/json

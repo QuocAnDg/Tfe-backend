@@ -6,3 +6,8 @@ def readoneuserfromusername(username):
     return DBservice.runquery(query)
 
 
+def createOne(username, password):
+    query = f"""CREATE (user:User {{username:"{username}",password:"{password}", isAdmin:false}}) RETURN user;"""
+    return DBservice.runquery(query)
+
+
