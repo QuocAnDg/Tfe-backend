@@ -34,11 +34,11 @@ MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les lutins"})
 CREATE (t)-[:LIVRE]->(c);
 MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Tiffins"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}, (c:Creche {nom:"Cardinal Mercier"})
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Cardinal Mercier"})
 CREATE (t)-[:LIVRE]->(c);
 MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Poussins"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}, (c:Creche {nom:"Saint Joseph"})
+MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Saint Joseph"})
 CREATE (t)-[:LIVRE]->(c);
 
 MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Langes S"})
