@@ -24,3 +24,9 @@ def read_tournee_from_nom(nom):
 def creer_tournee(nom):
     query = f"""CREATE (t:Tournee{{nom:"{nom}"}});"""
     return DBservice.runquery(query)
+
+
+def ajouter_creche_a_tournee(nom_tournee, nom_creche):
+    query=f"""MATCH (t:Tournee {{nom:"{nom_tournee}"}}), (c:Creche {{nom:"{nom_creche}"}})
+    CREATE (t)-[:LIVRE]->(c);"""
+    return DBservice.runquery(query)

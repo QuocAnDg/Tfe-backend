@@ -30,3 +30,16 @@ Content-Type: application/json
     }
   ]
 }
+
+### Modifier une commande (crèche)
+POST http://localhost:5000/creches/Rêverie
+Content-Type: application/json
+
+{
+  "articles": {
+    "Langes S": 3,
+    "Inserts": 24
+  }
+}
+
+
