@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 
 from routes import commandes
 from routes import users
+from routes import tournees
 
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -22,6 +23,7 @@ jwt = JWTManager(app)
 # Register routes
 app.register_blueprint(users.users_blueprint, url_prefix="/users")
 app.register_blueprint(commandes.commandes_blueprint, url_prefix="/commandes")
+app.register_blueprint(tournees.tournees_blueprint, url_prefix="/tournees")
 
 
 if __name__ == '__main__':
