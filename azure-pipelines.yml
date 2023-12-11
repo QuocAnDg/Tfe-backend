@@ -11,13 +11,13 @@ variables:
   azureServiceConnectionId: 'cae618ab-a810-401d-9f20-4fab1f90b720'
 
   # Web app name
-  webAppName: 'tfe-backend-dev'
+  webAppName: 'TFE-group10-dev'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: 'tfe-backend-dev'
+  environmentName: 'TFE-group10-dev'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
@@ -79,7 +79,7 @@ stages:
             displayName: 'Use Python version'
 
           - task: AzureWebApp@1
-            displayName: 'Deploy Azure Web App : tfe-backend-dev'
+            displayName: 'Deploy Azure Web App : TFE-group10-dev'
             inputs:
               azureSubscription: $(azureServiceConnectionId)
               appName: $(webAppName)
