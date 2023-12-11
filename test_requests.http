@@ -16,6 +16,14 @@ Content-Type: application/json
   "password": "blablabla"
 }
 
+### Create a new article
+POST http://localhost:5000/articles
+Content-Type: application/json
+
+{
+  "nom": "tabouret"
+}
+
 ### Créer tournée et ses crèches associées
 POST http://localhost:5000/tournees/
 Content-Type: application/json
