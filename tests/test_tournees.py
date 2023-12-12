@@ -2,25 +2,21 @@ from flask import Flask, jsonify, request
 import pytest
 from app import app
 
-@pytest.fixture()
-def client():
-    with app.test_client() as client:
-        yield client
 
 
-def test_get_tournees(client, auth_token):
-    headers = {'Authorization': f'Bearer {auth_token}'}
+def test_get_tournees(client, valid_auth_token):
+    headers = {'Authorization': f'Bearer {valid_auth_token}'}
     response = client.get('/tournees/', headers=headers)
     assert response.status_code == 200
 
-def test_get_tournee(client, auth_token):
-    headers = {'Authorization': f'Bearer {auth_token}'}
+def test_get_tournee(client, valid_auth_token):
+    headers = {'Authorization': f'Bearer {valid_auth_token}'}
     response = client.get('/tournees/1', headers=headers)
     assert response.status_code == 200
 
 
-def test_add_tournee(client, auth_token):
-    headers = {'Authorization': f'Bearer {auth_token}'}
+def test_add_tournee(client, valid_auth_token):
+    headers = {'Authorization': f'Bearer {valid_auth_token}'}
     creches_data = {
     "nom": "Tournée manèges",
     "crèches": [

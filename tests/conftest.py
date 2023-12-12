@@ -1,6 +1,18 @@
+from app import app
 import pytest
+from flask_jwt_extended import JWTManager, create_access_token
+import os
+
+@pytest.fixture(scope="module")
+def client():
+    with app.test_client() as client:
+        yield client
 
 
 @pytest.fixture(scope="module")
-def auth_token():
-    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMjM5NTA5MSwianRpIjoiNWYxZDkwMjctNDE3Mi00MzIxLWI2ZjctNGRkNzYyNDcyNmU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNzAyMzk1MDkxLCJleHAiOjE3MDIzOTU5OTF9.rvrNbxxwI4hX5XIxikki8wuwZQ-WF2nA39buZASZdgE"
+def valid_auth_token(client):
+    with app.app_context():
+        client.application.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
+        jwt = JWTManager(client.application)
+        access_token = create_access_token(identity="test_identity")
+        return access_token
