@@ -17,11 +17,11 @@ Content-Type: application/json
 }
 
 ### Create a new article
-POST http://localhost:5000/articles
+POST http://localhost:5000/articles/
 Content-Type: application/json
 
 {
-  "nom": "tabouret"
+  "nom": "tabouret2"
 }
 
 ### Créer tournée et ses crèches associées

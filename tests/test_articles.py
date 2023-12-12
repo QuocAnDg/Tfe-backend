@@ -11,7 +11,7 @@ def client():
 def test_add_article(client):
     article_data = {"nom": "Sample Article"}
 
-    response = client.post('/articles', json=article_data)
+    response = client.post('/articles/', json=article_data)
 
     assert response.status_code == 308
 
