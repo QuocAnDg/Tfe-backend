@@ -28,3 +28,10 @@ def modify_creche(nom, new_articles):
         query = f"""MATCH (c:Creche {{nom:"{nom}"}}), (a:Article {{nom:"{article}"}})
             CREATE (c)-[:CONTIENT {{quantite:{new_articles[article]}}}]->(a);"""
         DBservice.runquery(query)
+
+
+def change_statut(nom_creche, new_statut):
+    query = f"""MATCH (creche:Creche {{nom: "{nom_creche}"}})
+    SET creche.statut = "{new_statut}"
+    RETURN creche"""
+    DBservice.runquery(query)

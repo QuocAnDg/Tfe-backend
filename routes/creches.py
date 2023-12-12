@@ -13,3 +13,9 @@ def get_creche(nom):
 def modify_creche(nom):
     new_articles = request.json.get("articles", None)
     return jsonify(creches.modify_creche(nom, new_articles))
+
+
+@bp_creches.route('/changerstatut/<nom>', methods=['POST'])
+def changer_statut(nom):
+    new_statut = request.json.get("statut", None)
+    return jsonify(creches.change_statut(nom, new_statut))

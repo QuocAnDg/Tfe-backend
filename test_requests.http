@@ -65,4 +65,12 @@ Content-Type: application/json
 ### READ une crèche (crèche)
 GET http://localhost:5000/creches/Rêverie
 
+### Modifier le statut d'une commande
+POST http://localhost:5000/creches/changerstatut/Rêverie
+Content-Type: application/json
+
+{
+  "statut": "pas livré"
+}
+
 
