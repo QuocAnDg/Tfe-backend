@@ -1,21 +1,25 @@
 from flask import Blueprint, jsonify, request
 from models import tournees
 from models import creches
+from flask_jwt_extended import jwt_required
 
 bp_tournees = Blueprint('tournees', __name__)
 
 
 @bp_tournees.route('/', methods=['GET'])
+@jwt_required()
 def get_tournees():
     return jsonify(tournees.read_toutes_les_tournees())
 
 
 @bp_tournees.route('/<nom>', methods=['GET'])
+@jwt_required()
 def get_tournee(nom):
     return jsonify(tournees.read_une_tournee(nom))
 
 
 @bp_tournees.route('/', methods=['POST'])
+@jwt_required()
 def add_tournee():
     nom_tournee = request.json.get("nom", None)
     liste_creches = request.json.get("crèches", None)
@@ -34,6 +38,7 @@ def add_tournee():
 
 
 @bp_tournees.route('/<nom>', methods=['DELETE'])
+@jwt_required()
 def delete_tournee(nom):
     tournee_found = tournees.read_tournee(nom)
 

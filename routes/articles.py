@@ -1,10 +1,12 @@
 from flask import Blueprint, jsonify, request
 from models import articles
+from flask_jwt_extended import jwt_required
 
 bp_articles = Blueprint('articles', __name__)
 
 
 @bp_articles.route('/', methods=['POST'])
+@jwt_required()
 def add_article():
     new_article = request.json.get("nom", None)
     return jsonify(articles.add_article(new_article))

@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from models import users
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required
 
 users_blueprint = Blueprint('users', __name__)
 
@@ -20,6 +20,7 @@ def login():
 
 
 @users_blueprint.route('/register', methods=['POST'])
+@jwt_required()
 def register():
     username_request = request.json.get("username", None)
     password_request = request.json.get("password", None)

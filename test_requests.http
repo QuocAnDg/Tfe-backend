@@ -7,8 +7,13 @@ Content-Type: application/json
   "password": "admin"
 }
 
+> {%
+  client.global.set("auth_token", response.body.access_token);
+%}
+
 ### Create a new user
 POST http://localhost:5000/users/register
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
@@ -18,6 +23,7 @@ Content-Type: application/json
 
 ### Create a new article
 POST http://localhost:5000/articles/
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
@@ -26,6 +32,7 @@ Content-Type: application/json
 
 ### Créer tournée et ses crèches associées
 POST http://localhost:5000/tournees/
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
@@ -50,9 +57,11 @@ Content-Type: application/json
 
 ### Supprimer tournée
 DELETE http://localhost:5000/tournees/Tournée manèges555
+Authorization: Bearer {{auth_token}}
 
 ### Modifier une commande (crèche)
 POST http://localhost:5000/creches/Rêverie
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
@@ -64,9 +73,11 @@ Content-Type: application/json
 
 ### READ une crèche (crèche)
 GET http://localhost:5000/creches/Rêverie
+Authorization: Bearer {{auth_token}}
 
 ### Modifier le statut d'une commande
 POST http://localhost:5000/creches/changerstatut/Rêverie
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
