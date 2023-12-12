@@ -13,6 +13,6 @@ def test_add_article(client):
 
     response = client.post('/articles/', json=article_data)
 
-    assert response.status_code == 308
+    assert response.status_code == 200
 
 
