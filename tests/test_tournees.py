@@ -8,16 +8,19 @@ def client():
         yield client
 
 
-def test_get_tournees(client):
-    response = client.get('/tournees/')
+def test_get_tournees(client, auth_token):
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.get('/tournees/', headers=headers)
     assert response.status_code == 200
 
-def test_get_tournee(client):
-    response = client.get('/tournees/1')
+def test_get_tournee(client, auth_token):
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.get('/tournees/1', headers=headers)
     assert response.status_code == 200
 
 
-def test_add_tournee(client):
+def test_add_tournee(client, auth_token):
+    headers = {'Authorization': f'Bearer {auth_token}'}
     creches_data = {
     "nom": "Tournée manèges",
     "crèches": [
@@ -37,7 +40,7 @@ def test_add_tournee(client):
     }
     ]
     }
-    response = client.post('/tournees/', json=creches_data)
+    response = client.post('/tournees/', headers=headers, json=creches_data)
     assert response.status_code == 401 # tournee already added
 
 

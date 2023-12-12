@@ -17,8 +17,9 @@ def test_login(client):
     response = client.post('/users/login', json=users_data)
     assert response.status_code == 200
 
-def test_register(client):
+def test_register(client, auth_token):
     users_data = {"username": "aNewUser2", "password": "blablablaa"}
-    response = client.post('/users/register', json=users_data)
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.post('/users/register', headers=headers, json=users_data)
     assert response.status_code == 401 
 

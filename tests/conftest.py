@@ -1,0 +1,6 @@
+import pytest
+
+
+@pytest.fixture(scope="module")
+def auth_token():
+    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcwMjM5NTA5MSwianRpIjoiNWYxZDkwMjctNDE3Mi00MzIxLWI2ZjctNGRkNzYyNDcyNmU3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNzAyMzk1MDkxLCJleHAiOjE3MDIzOTU5OTF9.rvrNbxxwI4hX5XIxikki8wuwZQ-WF2nA39buZASZdgE"

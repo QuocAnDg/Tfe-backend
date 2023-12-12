@@ -8,11 +8,9 @@ def client():
         yield client
 
 
-def test_add_article(client):
+def test_add_article(client, auth_token):
     article_data = {"nom": "Sample Article"}
-
-    response = client.post('/articles/', json=article_data)
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.post('/articles/', headers=headers, json=article_data)
 
     assert response.status_code == 200
-
-

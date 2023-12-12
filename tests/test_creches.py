@@ -9,25 +9,28 @@ def client():
         yield client
 
 
-def test_get_creche(client):
-    response = client.get('/creches/Rêverie')
+def test_get_creche(client, auth_token):
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.get('/creches/Rêverie', headers=headers)
     assert response.status_code == 200
 
 
-def test_modify_creche(client):
+def test_modify_creche(client, auth_token):
     articles_data = {
         "articles": {
             "Langes S": 3,
             "Inserts": 24
         }
     }
-    response = client.post('/creches/Rêverie', json=articles_data)
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.post('/creches/Rêverie', headers=headers, json=articles_data)
     assert response.status_code == 200
 
 
-def test_modify_statut_creche(client):
+def test_modify_statut_creche(client, auth_token):
     statut_data = {
         "statut": "livré"
     }
-    response = client.post('/creches/changerstatut/Rêverie', json=statut_data)
+    headers = {'Authorization': f'Bearer {auth_token}'}
+    response = client.post('/creches/changerstatut/Rêverie', headers=headers, json=statut_data)
     assert response.status_code == 200
