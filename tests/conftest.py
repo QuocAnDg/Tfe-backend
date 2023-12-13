@@ -10,9 +10,7 @@ def client():
     with app.test_client() as client:
         yield client
 
-
-
-@pytest.fixture(scope="module")
+@pytest.fixture
 def valid_auth_token(client):
     with app.app_context():
         client.application.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
@@ -23,3 +21,8 @@ def valid_auth_token(client):
 def mock_client_post(client):
     with patch.object(client, 'post', return_value=Mock(status_code=200, json_data={"status": "success"})):
         yield client.post 
+
+@pytest.fixture
+def mock_client_delete(client):
+    with patch.object(client, 'delete', return_value=Mock(status_code=200, json_data={"status": "success"})):
+        yield client.delete 
