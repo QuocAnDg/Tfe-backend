@@ -21,4 +21,4 @@ def get_articles():
 @bp_articles.route('/<nom>', methods=['DELETE'])
 @jwt_required()
 def delete_article(nom):
-    return jsonify(articles.add_article(nom))
+    return jsonify(articles.delete_article(nom))

@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ### Delete article
-DELETE http://localhost:5000/articles/tabouret2
+DELETE http://localhost:5000/articles/tabouret
 Authorization: Bearer {{auth_token}}
 
 
