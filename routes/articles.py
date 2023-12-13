@@ -16,3 +16,9 @@ def add_article():
 @jwt_required()
 def get_articles():
     return jsonify(articles.read_tous_les_articles())
+
+
+@bp_articles.route('/<nom>', methods=['DELETE'])
+@jwt_required()
+def delete_article(nom):
+    return jsonify(articles.add_article(nom))

@@ -30,6 +30,11 @@ Content-Type: application/json
   "nom": "tabouret2"
 }
 
+### Delete article
+DELETE http://localhost:5000/articles/tabouret2
+Authorization: Bearer {{auth_token}}
+
+
 ### Créer tournée et ses crèches associées
 POST http://localhost:5000/tournees/
 Authorization: Bearer {{auth_token}}
