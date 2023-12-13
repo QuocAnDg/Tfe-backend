@@ -1,8 +1,8 @@
 MATCH (n)
 DETACH DELETE n;
 
-CREATE (u:User {username:"admin",password:"admin", isAdmin:true});
-CREATE (u:User {username:"livreur1",password:"livreur1", isAdmin:false});
+CREATE (u:User {username:"admin",password:"b'$2b$12$pZPh5ExE26.W.RpUww.5ie9d0Wl0sB0UJT5ZPxPS8hkYrdiOkorhm'", isAdmin:true});
+CREATE (u:User {username:"test",password:"b'$2b$12$bSHoNZI1GK6zVYGBE6xMqeOFteQ7hgXSupjcfAvmkq4440Ow8YUa2'", isAdmin:false});
 
 CREATE (a:Article{nom:"Langes S"});
 CREATE (a:Article{nom:"Langes M"});
