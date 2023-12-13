@@ -10,3 +10,9 @@ bp_articles = Blueprint('articles', __name__)
 def add_article():
     new_article = request.json.get("nom", None)
     return jsonify(articles.add_article(new_article))
+
+
+@bp_articles.route('/', methods=['GET'])
+@jwt_required()
+def get_articles():
+    return jsonify(articles.read_tous_les_articles())

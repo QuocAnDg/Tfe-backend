@@ -34,7 +34,7 @@ CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
 
 @app.route('/')
 def hello():
-    return 'Hello, World! 2'
+    return 'Hello, World!'
 
 if __name__ == '__main__':
     app.run(debug=True)
