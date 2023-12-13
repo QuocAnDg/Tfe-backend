@@ -16,7 +16,7 @@ def login():
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=username_request)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token, user=user_found[0]["user"])
 
 
 @users_blueprint.route('/register', methods=['POST'])

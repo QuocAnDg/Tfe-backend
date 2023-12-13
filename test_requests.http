@@ -41,7 +41,7 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "nom": "Tournée manèges23s",
+  "nom": "abc",
   "crèches": [
     {
       "nom": "Crèche 1",
@@ -68,7 +68,7 @@ Content-Type: application/json
 }
 
 ### Supprimer tournée
-DELETE http://localhost:5000/tournees/Tournée manèges23s
+DELETE http://localhost:5000/tournees/abc
 Authorization: Bearer {{auth_token}}
 
 ### Modifier une commande (crèche)
