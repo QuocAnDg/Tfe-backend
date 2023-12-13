@@ -13,9 +13,9 @@ def add_creche(nom, adresse, telephone, articles):
     query = f"""CREATE (c:Creche{{nom:"{nom}", adresse: "{adresse}", telephone: "{telephone}"}});"""
     DBservice.runquery(query)
 
-    for article in articles.keys():
-        query = f"""MATCH (c:Creche {{nom:"{nom}"}}), (a:Article {{nom:"{article}"}})
-            CREATE (c)-[:CONTIENT {{quantite:{articles[article]}}}]->(a);"""
+    for article in articles:
+        query = f"""MATCH (c:Creche {{nom:"{nom}"}}), (a:Article {{nom:"{article["name"]}"}})
+            CREATE (c)-[:CONTIENT {{quantite:{article["quantity"]}}}]->(a);"""
         DBservice.runquery(query)
 
 
