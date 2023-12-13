@@ -3,7 +3,7 @@ from utils import DBservice
 
 def add_article(nom):
     query = f"""CREATE (article:Article{{nom:"{nom}"}}) RETURN article;"""
-    DBservice.runquery(query)
+    return DBservice.runquery(query)
 
 
 def read_tous_les_articles():

@@ -1,10 +1,3 @@
-from flask import Flask, jsonify, request
-import pytest
-from app import app
-
-
-
-
 def test_get_creche(client, valid_auth_token):
     headers = {'Authorization': f'Bearer {valid_auth_token}'}
     response = client.get('/creches/Rêverie', headers=headers)

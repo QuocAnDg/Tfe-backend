@@ -1,9 +1,3 @@
-import pytest
-
-
-
-
-
 def test_add_article(client, valid_auth_token):
     article_data = {"nom": "Sample Article"}
     headers = {'Authorization': f'Bearer {valid_auth_token}'}
