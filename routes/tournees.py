@@ -29,12 +29,12 @@ def add_tournee():
     if len(tournee_found) != 0:
         return jsonify({"msg": "Erreur, il existe déjà une tournée avec ce nom"}), 401
 
-    tournees.creer_tournee(nom_tournee)
+    tournee_cree = tournees.creer_tournee(nom_tournee)
     for creche in liste_creches:
         creches.add_creche(creche["nom"], creche["adresse"], creche["telephone"], creche["articles"])
         tournees.ajouter_creche_a_tournee(nom_tournee, creche["nom"])
 
-    return jsonify("ok")
+    return jsonify(tournee_cree)
 
 
 @bp_tournees.route('/<nom>', methods=['DELETE'])
