@@ -26,8 +26,8 @@ def creer_tournee(nom):
 
 
 def delete_tournee(nom):
-    # TODO: supprimer les relations de la node, les creches et les relations entre creche et article
-    query = f"""MATCH (tournee:Tournee{{nom:"{nom}"}}) DELETE TOURNEE;"""
+    query = f"""MATCH (t:Tournee {{nom: "{nom}"}})-[r:LIVRE]->(c:Creche)-[r2:CONTIENT]->(a:Article)
+    DETACH DELETE t, r, c, r2;"""
     return DBservice.runquery(query)
 
 
