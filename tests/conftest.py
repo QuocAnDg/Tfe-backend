@@ -19,7 +19,12 @@ def valid_auth_token(client):
         access_token = create_access_token(identity="test_identity")
         return access_token                                     
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def mock_client_post(client):
     with patch.object(client, 'post', return_value=Mock(status_code=200, json_data={"status": "success"})):
         yield client.post 
+
+@pytest.fixture(scope="module")
+def mock_client_delete(client):
+    with patch.object(client, 'delete', return_value=Mock(status_code=200, json_data={"status": "success"})):
+        yield client.delete 

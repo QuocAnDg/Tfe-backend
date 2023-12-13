@@ -40,3 +40,8 @@ def test_add_tournee(valid_auth_token, mock_client_post):
     }
     response = mock_client_post('/tournees/', headers=headers, json=creches_data)
     assert response.status_code == 200
+
+def test_delete_tournee(mock_client_delete, valid_auth_token):
+    headers = {'Authorization': f'Bearer {valid_auth_token}'}
+    response = mock_client_delete('/tournees/Tournée manèges23s', headers=headers)
+    assert response.status_code == 200
