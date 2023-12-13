@@ -43,9 +43,14 @@ stages:
         source antenv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pytest tests
       workingDirectory: $(projectRoot)
       displayName: "Install requirements"
+   
+    - script: 
+        source antenv/bin/activate
+        pytest
+      workingDirectory: $(projectRoot)
+      displayName: 'tests with Pytest'
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
