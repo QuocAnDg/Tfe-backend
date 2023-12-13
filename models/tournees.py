@@ -21,7 +21,7 @@ def read_tournee(nom):
 
 
 def creer_tournee(nom):
-    query = f"""CREATE (t:Tournee{{nom:"{nom}"}});"""
+    query = f"""CREATE (t:Tournee{{nom:"{nom}"}}) RETURN t;"""
     return DBservice.runquery(query)
 
 

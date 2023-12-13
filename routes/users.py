@@ -10,9 +10,12 @@ def login():
     username_request = request.json.get("username", None)
     password_request = request.json.get("password", None)
 
+    if username_request is None or username_request == "" or password_request is None or password_request == "":
+        return jsonify({"msg": "Incorrect request"}), 400
+
     user_found = users.readoneuserfromusername(username_request)
 
-    if len(user_found) == 0 or len(username_request) == 0 or password_request != user_found[0]["user"]["password"]:
+    if len(user_found) == 0 or password_request != user_found[0]["user"]["password"]:
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=username_request)
@@ -25,10 +28,13 @@ def register():
     username_request = request.json.get("username", None)
     password_request = request.json.get("password", None)
 
+    if username_request is None or username_request == "" or password_request is None or password_request == "":
+        return jsonify({"msg": "Incorrect request"}), 400
+
     user_found = users.readoneuserfromusername(username_request)
 
-    if len(user_found) != 0 or len(username_request) == 0:
-        return jsonify({"msg": "Username already existing"}), 401
+    if len(user_found) != 0:
+        return jsonify({"msg": "Username already existing"}), 406
 
     return users.createOne(username_request, password_request)
 

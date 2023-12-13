@@ -6,6 +6,11 @@ def add_article(nom):
     return DBservice.runquery(query)
 
 
+def get_article(nom):
+    query = f"""MATCH (article:Article{{nom:"{nom}"}}) RETURN article;"""
+    return DBservice.runquery(query)
+
+
 def read_tous_les_articles():
     query = """MATCH (article:Article)
         RETURN article;"""

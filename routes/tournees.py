@@ -24,10 +24,8 @@ def add_tournee():
     nom_tournee = request.json.get("nom", None)
     liste_creches = request.json.get("crèches", None)
 
-    tournee_found = tournees.read_tournee(nom_tournee)
-
-    if len(tournee_found) != 0:
-        return jsonify({"msg": "Erreur, il existe déjà une tournée avec ce nom"}), 401
+    if len(tournees.read_tournee(nom_tournee)) != 0:
+        return jsonify({"msg": "Erreur, il existe déjà une tournée avec ce nom"}), 406
 
     tournee_cree = tournees.creer_tournee(nom_tournee)
     for creche in liste_creches:
@@ -43,6 +41,6 @@ def delete_tournee(nom):
     tournee_found = tournees.read_tournee(nom)
 
     if len(tournee_found) == 0:
-        return jsonify({"msg": "Erreur, il n'existe pas de tournée avec ce nom"}), 401
+        return jsonify({"msg": "Il n'existe pas de tournée avec ce nom"}), 404
 
     return jsonify(tournees.delete_tournee(nom))
