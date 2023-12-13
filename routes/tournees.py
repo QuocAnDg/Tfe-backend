@@ -31,7 +31,7 @@ def add_tournee():
 
     tournees.creer_tournee(nom_tournee)
     for creche in liste_creches:
-        creches.add_creche(creche["nom"], "Default", creche["articles"])
+        creches.add_creche(creche["nom"], creche["adresse"], creche["telephone"], creche["articles"])
         tournees.ajouter_creche_a_tournee(nom_tournee, creche["nom"])
 
     return jsonify("ok")

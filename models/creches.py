@@ -9,8 +9,8 @@ def read_une_creche(nom):
     return DBservice.runquery(query)
 
 
-def add_creche(nom, adresse, articles):
-    query = f"""CREATE (c:Creche{{nom:"{nom}", adresse: "{adresse}"}});"""
+def add_creche(nom, adresse, telephone, articles):
+    query = f"""CREATE (c:Creche{{nom:"{nom}", adresse: "{adresse}", telephone: "{telephone}"}});"""
     DBservice.runquery(query)
 
     for article in articles.keys():

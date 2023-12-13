@@ -36,10 +36,12 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "nom": "Tournée manèges555",
+  "nom": "Tournée manèges2",
   "crèches": [
     {
       "nom": "Crèche 1",
+      "adresse": "Rue de l'étang, 12",
+      "telephone": "026620124",
       "articles": {
         "Langes S": 3,
         "Langes M": 2
@@ -47,6 +49,8 @@ Content-Type: application/json
     },
     {
       "nom": "Crèche 2",
+      "adresse": "Herman Debroux 14",
+      "telephone": "0259915992",
       "articles": {
         "Langes S": 1,
         "Langes M": 4
