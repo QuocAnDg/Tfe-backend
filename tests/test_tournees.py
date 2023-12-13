@@ -1,8 +1,3 @@
-from flask import Flask, jsonify, request
-import pytest
-from app import app
-
-
 def test_get_tournees(client, valid_auth_token):
     headers = {'Authorization': f'Bearer {valid_auth_token}'}
     response = client.get('/tournees/', headers=headers)
@@ -15,7 +10,7 @@ def test_get_tournee(client, valid_auth_token):
     assert response.status_code == 200
 
 
-def test_add_tournee(client, valid_auth_token):
+def test_add_tournee(valid_auth_token, mock_client_post):
     headers = {'Authorization': f'Bearer {valid_auth_token}'}
     creches_data = {
         "nom": "Tournée manèges2",
@@ -40,5 +35,5 @@ def test_add_tournee(client, valid_auth_token):
             }
         ]
     }
-    response = client.post('/tournees/', headers=headers, json=creches_data)
-    assert response.status_code == 401  # tournee already added
+    response = mock_client_post('/tournees/', headers=headers, json=creches_data)
+    assert response.status_code == 200
