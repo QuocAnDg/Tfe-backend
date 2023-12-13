@@ -15,7 +15,7 @@ import os
 
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173")
+
 
 app.config["JWT_SECRET_KEY"] = os.getenv("SECRET_KEY")
 jwt = JWTManager(app)
@@ -26,6 +26,8 @@ app.register_blueprint(users.users_blueprint, url_prefix="/users")
 app.register_blueprint(tournees.bp_tournees, url_prefix="/tournees")
 app.register_blueprint(creches.bp_creches, url_prefix="/creches")
 app.register_blueprint(articles.bp_articles, url_prefix="/articles")
+
+CORS(app, origins=["http://localhost:5173", "http://127.0.0.1:5173"])
 
 @app.route('/')
 def hello():
