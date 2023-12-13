@@ -3,8 +3,8 @@ POST http://localhost:5000/users/login
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "admin"
+  "username": "testbcrypt2224",
+  "password": "abc"
 }
 
 > {%
@@ -17,8 +17,8 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "username": "aNewUser2",
-  "password": "blablabla"
+  "username": "testbcrypt2224",
+  "password": "abc"
 }
 
 ### Create a new article
