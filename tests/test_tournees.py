@@ -13,25 +13,28 @@ def test_get_tournee(client, valid_auth_token):
 def test_add_tournee(valid_auth_token, mock_client_post):
     headers = {'Authorization': f'Bearer {valid_auth_token}'}
     creches_data = {
-        "nom": "Tournée manèges2",
+        "nom": "Tournée manèges23s",
         "crèches": [
             {
                 "nom": "Crèche 1",
                 "adresse": "Rue de l'étang, 12",
                 "telephone": "026620124",
-                "articles": {
-                    "Langes S": 3,
-                    "Langes M": 2
-                }
+                "articles": [
+                    {
+                        "name": "Langes S",
+                        "quantity": 5
+                    },
+                    {
+                        "name": "Langes M",
+                        "quantity": 2
+                    }
+                ]
             },
             {
                 "nom": "Crèche 2",
                 "adresse": "Herman Debroux 14",
                 "telephone": "0259915992",
-                "articles": {
-                    "Langes S": 1,
-                    "Langes M": 4
-                }
+                "articles": []
             }
         ]
     }
