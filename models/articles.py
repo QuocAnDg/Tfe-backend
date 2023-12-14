@@ -19,5 +19,8 @@ def read_tous_les_articles():
 
 def delete_article(nom):
     query = f"""MATCH (a:Article{{nom: "{nom}"}})
-        DELETE a;"""
+        WHERE NOT (a) -- ()
+        WITH a
+        DETACH DELETE a
+        RETURN a as deletedArticle"""
     return DBservice.runquery(query)

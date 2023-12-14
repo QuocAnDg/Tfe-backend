@@ -27,12 +27,12 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "nom": "tabouret2222",
+  "nom": "abcdef",
   "unité": "caisses"
 }
 
 ### Delete article
-DELETE http://localhost:5000/articles/tabouret
+DELETE http://localhost:5000/articles/Langes S
 Authorization: Bearer {{auth_token}}
 
 

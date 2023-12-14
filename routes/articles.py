@@ -31,4 +31,9 @@ def get_articles():
 def delete_article(nom):
     if len(articles.get_article(nom)) == 0:
         return jsonify({"msg": "Article not present"}), 404
-    return jsonify(articles.delete_article(nom))
+
+    deleted_article = articles.delete_article(nom)
+    if len(deleted_article) == 0:
+        return jsonify({"msg": "Article couldn't be deleted as it is present in some commands"}), 406
+
+    return jsonify(deleted_article)
