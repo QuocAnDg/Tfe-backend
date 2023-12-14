@@ -10,6 +10,11 @@ bp_creches = Blueprint('creches', __name__)
 def get_creche(nom):
     return jsonify(creches.read_une_creche(nom))
 
+@bp_creches.route('/', methods=['GET'])
+@jwt_required()
+def get_creches():
+    return jsonify(creches.read_tous_les_creches())
+
 
 @bp_creches.route('/<nom>', methods=['POST'])
 @jwt_required()
