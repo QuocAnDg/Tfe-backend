@@ -8,6 +8,11 @@ def read_une_creche(nom):
 
     return DBservice.runquery(query)
 
+def read_tous_les_creches():
+    query = """MATCH (creche:Creche)
+        RETURN creche;"""
+    return DBservice.runquery(query)
+
 
 def add_creche(nom, adresse, telephone, articles):
     query = f"""CREATE (c:Creche{{nom:"{nom}", adresse: "{adresse}", telephone: "{telephone}"}});"""
