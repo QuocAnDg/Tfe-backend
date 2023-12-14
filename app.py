@@ -30,7 +30,7 @@ app.register_blueprint(tournees.bp_tournees, url_prefix="/tournees")
 app.register_blueprint(creches.bp_creches, url_prefix="/creches")
 app.register_blueprint(articles.bp_articles, url_prefix="/articles")
 
-CORS(app, origins='["http://localhost:5173", "http://127.0.0.1:5173","http://localhost:4173", "http://127.0.0.1:4173", "https://main.d32egvfvsedvvy.amplifyapp.com"]')
+CORS(app, origins='["http://localhost:5173", "http://127.0.0.1:5173","http://localhost:4173", "http://127.0.0.1:4173", "https://main.d31nx3ze3mvsk8.amplifyapp.com"]')
 
 @app.route('/')
 def hello():
