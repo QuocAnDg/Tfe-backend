@@ -20,30 +20,213 @@ CREATE (c:Creche{nom:"Cardinal Mercier", adresse:"Rue Souveraine 48, 1050 Bruxel
 CREATE (c:Creche{nom:"Les Poussins",adresse:"Av. Ducpétiaux 16, 1060 Saint-Gilles"});
 CREATE (c:Creche{nom:"Saint Joseph", adresse:"Chaussée de Boisfort 40, 1050 Ixelles"});
 
+CREATE (c:Creche{nom:"MMI", adresse:"Dorpsstraat 76, 7850 Edingen"});
+CREATE (c:Creche{nom:"Royaume", adresse:"Chau. d'Asse 130, 7850 Enghien"});
+CREATE (c:Creche{nom:"Gratty", adresse:"Place communale 17, 7830 Silly"});
+CREATE (c:Creche{nom:"Boulous", adresse:"Rue de la Coquiane 61, 7850 Petit-Enghien"});
+CREATE (c:Creche{nom:"IRSIA", adresse:"Place de Pâturages, 41 7340 Colfontaine"});
 
-CREATE (t:Tournee{id:1, nom:"Tournée Bruxelles Sud"});
-CREATE (t:Tournee{id:2, nom:"Tournée Bruxelles Nord"});
 
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Rêverie"})
+CREATE (t:Tournee{id:1, nom:"Tournée Charleroi"});
+CREATE (t:Tournee{id:2, nom:"Tournée Mons"});
+
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Rêverie"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les ptits loups"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Les ptits loups"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"L'arbre à cabane"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"L'arbre à cabane"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les lutins"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Les lutins"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Tiffins"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Les Tiffins"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Cardinal Mercier"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Cardinal Mercier"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Les Poussins"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Les Poussins"})
 CREATE (t)-[:LIVRE]->(c);
-MATCH (t:Tournee {nom:"Tournée Bruxelles Sud"}), (c:Creche {nom:"Saint Joseph"})
+MATCH (t:Tournee {nom:"Tournée Charleroi"}), (c:Creche {nom:"Saint Joseph"})
+CREATE (t)-[:LIVRE]->(c);
+
+MATCH (t:Tournee {nom:"Tournée Mons"}), (c:Creche {nom:"MMI"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Mons"}), (c:Creche {nom:"Royaume"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Mons"}), (c:Creche {nom:"Gratty"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Mons"}), (c:Creche {nom:"Boulous"})
+CREATE (t)-[:LIVRE]->(c);
+MATCH (t:Tournee {nom:"Tournée Mons"}), (c:Creche {nom:"IRSIA"})
 CREATE (t)-[:LIVRE]->(c);
 
 MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Langes S"})
-CREATE (c)-[:CONTIENT {quantite:5}]->(a);
-MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Langes M"})
 CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
 MATCH (c:Creche {creche:"Rêverie"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:10}]->(a);
+MATCH (c:Creche {nom:"Rêverie"}), (a:Article {nom:"Gants de toilette"})
 CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+
+MATCH (c:Creche {nom:"Les ptits loups"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {nom:"Les ptits loups"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Creche {nom:"Les ptits loups"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Les ptits loups"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {creche:"Les ptits loups"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:6}]->(a);
+MATCH (c:Creche {nom:"Les ptits loups"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"L'arbre à cabane"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"L'arbre à cabane"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"L'arbre à cabane"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"L'arbre à cabane"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"L'arbre à cabane"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:8}]->(a);
+MATCH (c:Creche {nom:"L'arbre à cabane"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Les lutins"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Les lutins"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:5}]->(a);
+MATCH (c:Creche {nom:"Les lutins"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"Les lutins"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {creche:"Les lutins"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:12}]->(a);
+MATCH (c:Creche {nom:"Les lutins"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+
+MATCH (c:Creche {nom:"Les Tiffins"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Les Tiffins"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Creche {nom:"Les Tiffins"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"Les Tiffins"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {creche:"Les Tiffins"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:12}]->(a);
+MATCH (c:Creche {nom:"Les Tiffins"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Cardinal Mercier"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"Cardinal Mercier"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:5}]->(a);
+MATCH (c:Creche {nom:"Cardinal Mercier"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Cardinal Mercier"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"Cardinal Mercier"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:14}]->(a);
+MATCH (c:Creche {nom:"Cardinal Mercier"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Les Poussins"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {nom:"Les Poussins"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Les Poussins"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"Les Poussins"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {creche:"Les Poussins"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:4}]->(a);
+MATCH (c:Creche {nom:"Les Poussins"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Saint Joseph"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Saint Joseph"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Creche {nom:"Saint Joseph"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1.5}]->(a);
+MATCH (c:Creche {nom:"Saint Joseph"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"Saint Joseph"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:14}]->(a);
+MATCH (c:Creche {nom:"Saint Joseph"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+
+
+
+
+MATCH (c:Creche {nom:"MMI"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"MMI"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:1.5}]->(a);
+MATCH (c:Creche {nom:"MMI"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"MMI"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {creche:"MMI"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:8}]->(a);
+MATCH (c:Creche {nom:"MMI"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Royaume"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {nom:"Royaume"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:3}]->(a);
+MATCH (c:Creche {nom:"Royaume"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"Royaume"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"Royaume"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:6}]->(a);
+MATCH (c:Creche {nom:"Royaume"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Gratty"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {nom:"Gratty"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"Gratty"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {nom:"Gratty"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+MATCH (c:Creche {creche:"Gratty"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:6}]->(a);
+MATCH (c:Creche {nom:"Gratty"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"Boulous"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"Boulous"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"Boulous"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:0.5}]->(a);
+MATCH (c:Creche {nom:"Boulous"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"Boulous"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:8}]->(a);
+MATCH (c:Creche {nom:"Boulous"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
+
+MATCH (c:Creche {nom:"IRSIA"}), (a:Article {nom:"Langes S"})
+CREATE (c)-[:CONTIENT {quantite:2}]->(a);
+MATCH (c:Creche {nom:"IRSIA"}), (a:Article {nom:"Langes M"})
+CREATE (c)-[:CONTIENT {quantite:6}]->(a);
+MATCH (c:Creche {nom:"IRSIA"}), (a:Article {nom:"Langes L"})
+CREATE (c)-[:CONTIENT {quantite:1.5}]->(a);
+MATCH (c:Creche {nom:"IRSIA"}), (a:Article {nom:"Inserts"})
+CREATE (c)-[:CONTIENT {quantite:1}]->(a);
+MATCH (c:Creche {creche:"IRSIA"}), (a:Article {nom:"Sacs-poubelle"})
+CREATE (c)-[:CONTIENT {quantite:35}]->(a);
+MATCH (c:Creche {nom:"IRSIA"}), (a:Article {nom:"Gants de toilette"})
+CREATE (c)-[:CONTIENT {quantite:0}]->(a);
