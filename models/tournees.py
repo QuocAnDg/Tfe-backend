@@ -9,7 +9,7 @@ def read_toutes_les_tournees():
 
 def read_une_tournee(nom):
     query = f"""MATCH (tournee:Tournee{{nom:"{nom}"}})-[:LIVRE]->(creche:Creche)-[c:CONTIENT]->(article:Article)
-        WITH creche, COLLECT({{article: article, quantite: c.quantite}}) AS articleList
+        WITH creche, COLLECT({{article: article, quantite: c.quantite, unité:c.unité}}) AS articleList
         RETURN creche,articleList;"""
     return DBservice.runquery(query)
 
