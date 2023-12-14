@@ -1,8 +1,8 @@
 from utils import DBservice
 
 
-def add_article(nom):
-    query = f"""CREATE (article:Article{{nom:"{nom}"}}) RETURN article;"""
+def add_article(nom, unite):
+    query = f"""CREATE (article:Article{{nom:"{nom}", unité:"{unite}"}}) RETURN article;"""
     return DBservice.runquery(query)
 
 

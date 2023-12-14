@@ -9,13 +9,15 @@ bp_articles = Blueprint('articles', __name__)
 @jwt_required()
 def add_article():
     new_article = request.json.get("nom", None)
+    unite = request.json.get("unité", None)
+
     if new_article is None or new_article == "":
         return jsonify({"msg": "Incorrect request"}), 400
 
     if len(articles.get_article(new_article)) != 0:
         return jsonify({"msg": "Article already existing"}), 406
 
-    return jsonify(articles.add_article(new_article))
+    return jsonify(articles.add_article(new_article, unite))
 
 
 @bp_articles.route('/', methods=['GET'])

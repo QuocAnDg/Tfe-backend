@@ -27,7 +27,8 @@ Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
-  "nom": "tabouret222"
+  "nom": "tabouret2222",
+  "unité": "caisses"
 }
 
 ### Delete article
