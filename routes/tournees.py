@@ -57,8 +57,8 @@ def edit_preset_tournee(nom):
     if len(tournee_found) == 0:
         return jsonify({"msg": "Il n'existe pas de tournée avec ce nom"}), 404
     
+    tournees.delete_from_preset(nom)
     for creche in liste_creches:
-        tournees.delete_from_preset(nom, creche['nom'])
         tournees.add_to_preset(nom, creche["nom"])
     
     
@@ -68,3 +68,26 @@ def edit_preset_tournee(nom):
 @jwt_required()
 def read_preset_tournee(nom):
     return jsonify(creches.read_tous_les_creches_du_preset_dune_tournee(nom))
+
+
+@bp_tournees.route('/<nom>/default', methods=['GET'])
+@jwt_required()
+def get_tournee_default(nom):
+    return jsonify(tournees.read_une_tournee_defaut(nom))
+
+
+@bp_tournees.route('/<nom>/replace', methods=['POST'])
+@jwt_required()
+def replace_nursery_tournee_(nom):
+    
+    liste_creches = request.json.get("crèches", None)
+
+    tournees.delete_creche_tournee(nom)
+
+    for creche in liste_creches:
+        liste_article = {item["article"]["nom"]: item["quantite"] for item in creche["articleList"]}
+
+        tournees.replace_creche_de_tournee(nom, creche["creche"]["nom"])
+        creches.modify_creche(creche["creche"]["nom"], liste_article)
+
+    return jsonify(tournees.read_une_tournee_defaut(nom))

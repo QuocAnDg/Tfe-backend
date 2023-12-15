@@ -36,3 +36,19 @@ def changer_statut(nom):
         return jsonify({"msg": "Creche not existing"}), 404
 
     return jsonify(creches.change_statut(nom, new_statut))
+
+
+@bp_creches.route('/<nom>/default', methods=['GET'])
+@jwt_required()
+def get_creche_defaut(nom):
+    return jsonify(creches.read_une_creche_defaut(nom))
+
+
+@bp_creches.route('/<nom>/default', methods=['POST'])
+@jwt_required()
+def modify_creche_defaut(nom):
+    new_articles = request.json.get("articles", None)
+    if new_articles is None:
+        return jsonify({"msg": "Incorrect request"}), 400
+
+    return jsonify(creches.modify_creche_defaut(nom, new_articles))
