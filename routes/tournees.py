@@ -44,3 +44,27 @@ def delete_tournee(nom):
         return jsonify({"msg": "Il n'existe pas de tournée avec ce nom"}), 404
 
     return jsonify(tournees.delete_tournee(nom))
+
+
+@bp_tournees.route('/<nom>/editpreset', methods=['POST'])
+@jwt_required()
+def edit_preset_tournee(nom):
+    
+    liste_creches = request.json.get("crèches", None)
+
+    tournee_found = tournees.read_tournee(nom)
+
+    if len(tournee_found) == 0:
+        return jsonify({"msg": "Il n'existe pas de tournée avec ce nom"}), 404
+    
+    for creche in liste_creches:
+        tournees.delete_from_preset(nom, creche['nom'])
+        tournees.add_to_preset(nom, creche["nom"])
+    
+    
+    return jsonify(creches.read_tous_les_creches_du_preset_dune_tournee(nom))
+
+@bp_tournees.route('/<nom>/preset', methods=['GET'])
+@jwt_required()
+def read_preset_tournee(nom):
+    return jsonify(creches.read_tous_les_creches_du_preset_dune_tournee(nom))

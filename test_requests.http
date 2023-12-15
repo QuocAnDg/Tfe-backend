@@ -1,0 +1,100 @@
+### Login
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {%
+  client.global.set("auth_token", response.body.access_token);
+%}
+
+### Create a new user
+POST http://localhost:5000/users/register
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "username": "aNewUser2",
+  "password": "blablabla"
+}
+
+
+### Create a new article
+POST http://localhost:5000/articles/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "nom": "tabouret2"
+}
+
+### Delete article
+DELETE http://localhost:5000/articles/tabouret
+Authorization: Bearer {{auth_token}}
+
+
+### Créer tournée et ses crèches associées
+POST http://localhost:5000/tournees/
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "nom": "Tournée manèges23s",
+  "crèches": [
+    {
+      "nom": "Crèche 1",
+      "adresse": "Rue de l'étang, 12",
+      "telephone": "026620124",
+      "articles": [
+        {
+          "name": "Langes S",
+          "quantity": 5
+        },
+        {
+          "name": "Langes M",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "nom": "Crèche 2",
+      "adresse": "Herman Debroux 14",
+      "telephone": "0259915992",
+      "articles": []
+    }
+  ]
+}
+
+### Supprimer tournée
+DELETE http://localhost:5000/tournees/Tournée manèges23s
+Authorization: Bearer {{auth_token}}
+
+### Modifier une commande (crèche)
+POST http://localhost:5000/creches/Rêverie
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "articles": {
+    "Langes S": 3,
+    "Inserts": 24
+  }
+}
+
+### READ une crèche (crèche)
+GET http://localhost:5000/creches/Rêverie
+Authorization: Bearer {{auth_token}}
+
+### Modifier le statut d'une commande
+POST http://localhost:5000/creches/changerstatut/Rêverie
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "statut": "pas livré"
+}
+
+

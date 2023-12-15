@@ -31,7 +31,7 @@ def modify_creche(nom, new_articles):
 
     for article in new_articles.keys():
         query = f"""MATCH (c:Creche {{nom:"{nom}"}}), (a:Article {{nom:"{article}"}})
-            CREATE (c)-[:CONTIENT {{quantite:{new_articles[article]}}}]->(a);"""
+            CREATE (c)-[:CONTIENT {{quantite:{new_articles[article]}}}]->(a)"""
         DBservice.runquery(query)
 
 
@@ -40,3 +40,10 @@ def change_statut(nom_creche, new_statut):
     SET creche.statut = "{new_statut}"
     RETURN creche"""
     DBservice.runquery(query)
+
+
+def read_tous_les_creches_du_preset_dune_tournee(nom_tournee):
+    query = f"""MATCH (t:Tournee {{nom:"{nom_tournee}"}})-[r:LIVRE_PAR_DEFAUT]->(c:Creche)
+    RETURN c;"""
+    return DBservice.runquery(query)
+

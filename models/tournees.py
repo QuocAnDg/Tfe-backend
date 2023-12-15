@@ -35,3 +35,14 @@ def ajouter_creche_a_tournee(nom_tournee, nom_creche):
     query=f"""MATCH (t:Tournee {{nom:"{nom_tournee}"}}), (c:Creche {{nom:"{nom_creche}"}})
     CREATE (t)-[:LIVRE]->(c);"""
     return DBservice.runquery(query)
+
+
+def delete_from_preset(nom_tournee, nom_creche):
+    query=f"""MATCH (t:Tournee {{nom:"{nom_tournee}"}})-[r:LIVRE_PAR_DEFAUT]->(c:Creche {{nom:"{nom_creche}"}})
+    DELETE r;"""
+    return DBservice.runquery(query)
+
+def add_to_preset(nom_tournee, nom_creche):
+    query=f"""MATCH (t:Tournee {{nom:"{nom_tournee}"}}), (c:Creche {{nom:"{nom_creche}"}})
+    CREATE (t)-[:LIVRE_PAR_DEFAUT]->(c);"""
+    return DBservice.runquery(query)
