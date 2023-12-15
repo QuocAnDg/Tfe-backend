@@ -4,12 +4,12 @@ DETACH DELETE n;
 CREATE (u:User {username:"admin",password:"b'$2b$12$pZPh5ExE26.W.RpUww.5ie9d0Wl0sB0UJT5ZPxPS8hkYrdiOkorhm'", isAdmin:true});
 CREATE (u:User {username:"test",password:"b'$2b$12$bSHoNZI1GK6zVYGBE6xMqeOFteQ7hgXSupjcfAvmkq4440Ow8YUa2'", isAdmin:false});
 
-CREATE (a:Article{nom:"Langes S", unité:"caisses"});
-CREATE (a:Article{nom:"Langes M", unité:"caisses"});
-CREATE (a:Article{nom:"Langes L", unité:"caisses"});
-CREATE (a:Article{nom:"Inserts", unité:"caisses"});
-CREATE (a:Article{nom:"Sacs-poubelle", unité:"unités"});
-CREATE (a:Article{nom:"Gants de toilette", unité:"caisses"});
+CREATE (a:Article{nom:"Langes S", unité:"caisse"});
+CREATE (a:Article{nom:"Langes M", unité:"caisse"});
+CREATE (a:Article{nom:"Langes L", unité:"caisse"});
+CREATE (a:Article{nom:"Inserts", unité:"caisse"});
+CREATE (a:Article{nom:"Sacs-poubelle", unité:"unité"});
+CREATE (a:Article{nom:"Gants de toilette", unité:"caisse"});
 
 CREATE (c:Creche{nom:"Rêverie", adresse: "Rue Francisco Ferrer 19 boite 3, 6181 Gouy-Lez-Piéton"});
 CREATE (c:Creche{nom:"Les ptits loups", adresse:"Rue de la Vielle Place 51, 6001 Marcinelle"});
